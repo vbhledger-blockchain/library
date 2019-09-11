@@ -1,10 +1,9 @@
 package sarama
 
 import (
-	//"crypto/tls"
 	"encoding/binary"
 	"fmt"
-	tls "github.com/vbhledger-blockchain/vbhledger/gm/tls"
+	"github.com/vbhledger-blockchain/library/gm/tls"
 	"io"
 	"net"
 	"strconv"

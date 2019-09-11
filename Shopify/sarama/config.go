@@ -2,9 +2,8 @@ package sarama
 
 import (
 	"compress/gzip"
-	//"crypto/tls"
 	"fmt"
-	tls "github.com/vbhledger-blockchain/vbhledger/gm/tls"
+	"github.com/vbhledger-blockchain/library/gm/tls"
 	"io/ioutil"
 	"net"
 	"regexp"
