@@ -22,7 +22,7 @@ package credentials
 
 import (
 	//"crypto/tls"
-	"github.com/vbhledger-blockchain/vbhledger/gm/tls"
+	"github.com/vbhledger-blockchain/library/gm/tls"
 )
 
 func init() {

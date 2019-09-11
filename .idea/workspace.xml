@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="35f5de62-ce3f-4800-b44c-3ccf74549ddd" name="默认更改列表" comment="">
+    <list default="true" id="e5571908-53f0-4cc3-8d30-1bf8a6cd69f3" name="默认更改列表" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopify/sarama/broker.go" beforeDir="false" afterPath="$PROJECT_DIR$/Shopify/sarama/broker.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shopify/sarama/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/Shopify/sarama/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/credentials/credentials.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/credentials/credentials.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/credentials/go16.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/credentials/go16.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/credentials/go17.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/credentials/go17.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/credentials/go18.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/credentials/go18.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grpc/internal/transport/handler_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/internal/transport/handler_server.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,11 +21,7 @@
     <option name="directoryName" value="iOyrjwtV" />
   </component>
   <component name="PropertiesComponent">
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
   <component name="RunDashboard">
@@ -40,8 +39,15 @@
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="分离国密算法包" />
-    <option name="LAST_COMMIT_MESSAGE" value="分离国密算法包" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="1">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

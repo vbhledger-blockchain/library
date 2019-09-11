@@ -27,8 +27,9 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+
 	"github.com/golang/protobuf/proto"
-	gmtls "github.com/vbhledger-blockchain/vbhledger/gm/tls"
+	gmtls "github.com/vbhledger-blockchain/library/gm/tls"
 	"github.com/vbhledger-blockchain/library/grpc/codes"
 	"github.com/vbhledger-blockchain/library/grpc/credentials"
 	"github.com/vbhledger-blockchain/library/grpc/metadata"
