@@ -1,1 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
+.idea
+!/gm/sm/x509/priv.pem
+!/gm/sm/x509/pub.pem
+!/gm/sm/x509/req.pem
+!/gm/sm/x509/ifile
+!/gm/sm/x509/ofile
+!/gm/sm/x509/cert.pem
