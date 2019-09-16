@@ -1,28 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e5571908-53f0-4cc3-8d30-1bf8a6cd69f3" name="默认更改列表" comment="">
+    <list default="true" id="3395c36f-a361-418d-b457-70e6d8890d7f" name="默认更改列表" comment="up tags v1.0.4">
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/.whitelist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/CODE_OF_CONDUCT.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/CONTRIBUTING.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/common/collection.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/common/common.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/common/configtx.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/common/configuration.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/common/ledger.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/common/policies.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/discovery/protocol.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/doc.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/gossip/message.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/ledger/queryresult/kv_query_result.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/ledger/rwset/kvrwset/kv_rwset.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/ledger/rwset/rwset.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/msp/identities.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/msp/msp_config.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/msp/msp_principal.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/orderer/ab.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/orderer/cluster.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/orderer/configuration.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/orderer/etcdraft/configuration.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/orderer/etcdraft/metadata.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/orderer/kafka.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/chaincode.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/chaincode_event.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/chaincode_shim.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/configuration.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/events.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/lifecycle/chaincode_definition.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/lifecycle/db.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/lifecycle/lifecycle.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/peer.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/policy.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/proposal.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/proposal_response.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/query.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/resources.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/signed_cc_dep_spec.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/peer/transaction.pb.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vbh-protos-go/transientstore/transientstore.pb.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/credentials/credentials.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/credentials/credentials.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/credentials/go16.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/credentials/go16.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/credentials/go17.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/credentials/go17.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/credentials/go18.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/credentials/go18.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grpc/internal/transport/handler_server.go" beforeDir="false" afterPath="$PROJECT_DIR$/grpc/internal/transport/handler_server.go" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="GOROOT" path="/usr/local/go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="iOyrjwtV" />
   </component>
+  <component name="ProjectId" id="1QtnILIdlUVMn23HMfOI4mwQJwS" />
   <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -38,6 +99,10 @@
   </component>
   <component name="SvnConfiguration">
     <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -47,7 +112,22 @@
             <State />
           </value>
         </entry>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="up tags v1.0.4" />
+    <option name="LAST_COMMIT_MESSAGE" value="up tags v1.0.4" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>true</integration-enabled>
+    <proxy>direct</proxy>
   </component>
 </project>
