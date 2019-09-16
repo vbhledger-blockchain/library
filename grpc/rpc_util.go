@@ -262,7 +262,14 @@ func (o PeerCallOption) after(c *callInfo) {
 // the data.  Please refer to
 // https://github.com/grpc/grpc/blob/master/doc/wait-for-ready.md.
 //
-// By default, RPCs are "Fail Fast".
+// By default, RPCs don't "wait for ready".
+func WaitForReady(waitForReady bool) CallOption {
+	return FailFastCallOption{FailFast: !waitForReady}
+}
+
+// FailFast is the opposite of WaitForReady.
+//
+// Deprecated: use WaitForReady.
 func FailFast(failFast bool) CallOption {
 	return FailFastCallOption{FailFast: failFast}
 }
