@@ -3,7 +3,7 @@ module github.com/vbhledger-blockchain/library
 go 1.12
 
 require (
-	github.com/cloudflare/cfssl v0.0.0-20190911221928-1a911ca1b1d6
+	github.com/cloudflare/cfssl v0.0.0-20180223231731-4e2dcbde5004
 	github.com/golang/protobuf v1.3.2
 	github.com/google/certificate-transparency-go v1.0.21
 	github.com/rcrowley/go-metrics v0.0.0-20190826022208-cac0b30c2563 // indirect
