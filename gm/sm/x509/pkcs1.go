@@ -1,17 +1,6 @@
-/*
-Copyright Suzhou Tongji Fintech Research Institute 2017 All Rights Reserved.
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-	http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-*/
+// Copyright 2011 The Go Authors. All rights reserved.
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
 
 package x509
 
@@ -44,6 +33,12 @@ type pkcs1AdditionalRSAPrime struct {
 	// We ignore these values because rsa will calculate them.
 	Exp   *big.Int
 	Coeff *big.Int
+}
+
+// pkcs1PublicKey reflects the ASN.1 structure of a PKCS#1 public key.
+type pkcs1PublicKey struct {
+	N *big.Int
+	E int
 }
 
 // ParsePKCS1PrivateKey returns an RSA private key from its ASN.1 PKCS#1 DER encoded form.
@@ -125,9 +120,41 @@ func MarshalPKCS1PrivateKey(key *rsa.PrivateKey) []byte {
 	return b
 }
 
+// ParsePKCS1PublicKey parses a PKCS#1 public key in ASN.1 DER form.
+func ParsePKCS1PublicKey(der []byte) (*rsa.PublicKey, error) {
+	var pub pkcs1PublicKey
+	rest, err := asn1.Unmarshal(der, &pub)
+	if err != nil {
+		return nil, err
+	}
+	if len(rest) > 0 {
+		return nil, asn1.SyntaxError{Msg: "trailing data"}
+	}
+
+	if pub.N.Sign() <= 0 || pub.E <= 0 {
+		return nil, errors.New("x509: public key contains zero or negative value")
+	}
+	if pub.E > 1<<31-1 {
+		return nil, errors.New("x509: public key contains large public exponent")
+	}
+
+	return &rsa.PublicKey{
+		E: pub.E,
+		N: pub.N,
+	}, nil
+}
+
+// MarshalPKCS1PublicKey converts an RSA public key to PKCS#1, ASN.1 DER form.
+func MarshalPKCS1PublicKey(key *rsa.PublicKey) []byte {
+	derBytes, _ := asn1.Marshal(pkcs1PublicKey{
+		N: key.N,
+		E: key.E,
+	})
+	return derBytes
+}
+
 // rsaPublicKey reflects the ASN.1 structure of a PKCS#1 public key.
 type rsaPublicKey struct {
 	N *big.Int
 	E int
 }
-
