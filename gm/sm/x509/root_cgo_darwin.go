@@ -143,7 +143,7 @@ static Boolean isRootCertificate(SecCertificateRef cert, CFErrorRef *errRef) {
 	return equal;
 }
 
-// FetchPEMRoots1 fetches the system's list of trusted X.509 root certificates
+// FetchPEMRoots fetches the system's list of trusted X.509 root certificates
 // for the kSecTrustSettingsPolicy SSL.
 //
 // On success it returns 0 and fills pemRoots with a CFDataRef that contains the extracted root
@@ -152,7 +152,7 @@ static Boolean isRootCertificate(SecCertificateRef cert, CFErrorRef *errRef) {
 //
 // Note: The CFDataRef returned in pemRoots and untrustedPemRoots must
 // be released (using CFRelease) after we've consumed its content.
-int FetchPEMRoots1(CFDataRef *pemRoots, CFDataRef *untrustedPemRoots, bool debugDarwinRoots) {
+int FetchPEMRoots(CFDataRef *pemRoots, CFDataRef *untrustedPemRoots, bool debugDarwinRoots) {
 	int i;
 
 	if (debugDarwinRoots) {
@@ -278,7 +278,7 @@ func loadSystemRoots() (*CertPool, error) {
 
 	var data C.CFDataRef = 0
 	var untrustedData C.CFDataRef = 0
-	err := C.FetchPEMRoots1(&data, &untrustedData, C.bool(debugDarwinRoots))
+	err := C.FetchPEMRoots(&data, &untrustedData, C.bool(debugDarwinRoots))
 	if err == -1 {
 		return nil, errors.New("crypto/x509: failed to load darwin system roots with cgo")
 	}
