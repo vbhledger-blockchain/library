@@ -902,7 +902,7 @@ func checkSignature(algo SignatureAlgorithm, signed, signature []byte, publicKey
 		}
 		//panic("aaaaa ")
 		fmt.Printf(" sm2Sig.R : %+v \n sm2Sig.S : %+v oooooooooooooooo\n ", sm2Sig.R, sm2Sig.S)
-		if !sm2.Sm2Verify(sm2pub, signed, nil, sm2Sig.R, sm2Sig.S) {
+		if !sm2.Sm2Verify(sm2pub, digest, nil, sm2Sig.R, sm2Sig.S) {
 			return errors.New("x509: SM2 verification failure")
 		}
 		return
