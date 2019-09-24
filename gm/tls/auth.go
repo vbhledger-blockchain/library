@@ -124,9 +124,7 @@ func verifyHandshakeSignature(sigType uint8, pubkey crypto.PublicKey, hashFunc x
 		if !ok {
 			return errors.New("tls: sm2 signing requires a sm2 public key")
 		}
-		//fmt.Printf(" sm2Sig.R : %+v \n sm2Sig.S : %+v oooooooooooooooo\n ",sm2Sig.R,sm2Sig.S)
-		//if !sm2.Sm2Verify(sm2pub, signed, nil,  sm2Sig.R, sm2Sig.S) {
-		if !sm2.Sm2Verify(pubkey, digest, nil,  sm2Sig.R, sm2Sig.S) {
+		if !sm2.Sm2Verify(pubkey, digest, nil, sm2Sig.R, sm2Sig.S) {
 			return errors.New("x509: SM2 verification failure")
 		}
 		return nil
@@ -255,6 +253,5 @@ func unsupportedCertificateError(cert *Certificate) error {
 
 	return fmt.Errorf("tls: internal error: unsupported key (%T)", cert.PrivateKey)
 }
+
 // go tool pprof -pdf crypto_test.go cpu.out > cpu.pdf
-
-

@@ -10,7 +10,6 @@ import (
 	"crypto/rsa"
 	"crypto/sha1"
 	"errors"
-	"fmt"
 	"github.com/vbhledger-blockchain/library/gm/sm/x509"
 	"io"
 )
@@ -120,8 +119,7 @@ func hashForServerKeyExchange(sigType uint8, hashFunc x509.Hash, version uint16,
 		return sha1Hash(slices), nil
 	}
 	if sigType == SignatureSM2 {
-		fmt.Printf("hashForServerKeyExchange.SignatureSM2 \n")
-		return sha1Hash(slices), nil  // todo  国密增加sm3 哈希
+		return sha1Hash(slices), nil
 	}
 	return md5SHA1Hash(slices), nil
 }

@@ -354,8 +354,6 @@ func (p7 *PKCS7) Decrypt(cert *Certificate, pk crypto.PrivateKey) ([]byte, error
 		}
 		return data.EncryptedContentInfo.decrypt(contentKey)
 	}
-	fmt.Printf("Unsupported Private Key: %v\n", pk)
-	// TODO: SM decript
 	return nil, ErrPKCS7UnsupportedAlgorithm
 }
 
@@ -372,7 +370,6 @@ func (eci encryptedContentInfo) decrypt(key []byte) ([]byte, error) {
 		!alg.Equal(oidEncryptionAlgorithmAES256CBC) &&
 		!alg.Equal(oidEncryptionAlgorithmAES128CBC) &&
 		!alg.Equal(oidEncryptionAlgorithmAES128GCM) {
-		fmt.Printf("Unsupported Content Encryption Algorithm: %s\n", alg)
 		return nil, ErrPKCS7UnsupportedAlgorithm
 	}
 

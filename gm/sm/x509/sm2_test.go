@@ -22,12 +22,10 @@ func TestSm2(t *testing.T) {
 		log.Fatal(err)
 		return
 	}
-	fmt.Printf("%v\n", priv.Curve.IsOnCurve(priv.X, priv.Y)) // 验证是否为sm2的曲线
 	pub := &priv.PublicKey
 	msg := []byte("123456")
 	d0, err := pub.Encrypt(msg)
 	if err != nil {
-		fmt.Printf("Error: failed to encrypt %s: %v\n", msg, err)
 		return
 	}
 	// fmt.Printf("Cipher text = %v\n", d0)
@@ -43,7 +41,7 @@ func TestSm2(t *testing.T) {
 		log.Fatal(err)
 		return
 	}
-	pubKey, _ := priv.Public().(* sm2.PublicKey)
+	pubKey, _ := priv.Public().(*sm2.PublicKey)
 	ok, err = WritePublicKeytoPem("pub.pem", pubKey, nil) // 生成公钥文件
 	if ok != true {
 		log.Fatal(err)
@@ -66,9 +64,9 @@ func TestSm2(t *testing.T) {
 		log.Fatal(err)
 		return
 	}
-	msg, _ = ioutil.ReadFile("ifile")                // 从文件读取数据
+	msg, _ = ioutil.ReadFile("ifile") // 从文件读取数据
 	var sm2Privkey *sm2.PrivateKey
-	switch  privKey.(type) {
+	switch privKey.(type) {
 	case *sm2.PrivateKey:
 		sm2Privkey, ok = privKey.(*sm2.PrivateKey)
 		if !ok {
@@ -170,7 +168,7 @@ func TestSm2(t *testing.T) {
 		UnknownExtKeyUsage: testUnknownExtKeyUsage,
 
 		BasicConstraintsValid: true,
-		IsCA: true,
+		IsCA:                  true,
 
 		OCSPServer:            []string{"http://ocsp.example.com"},
 		IssuingCertificateURL: []string{"http://crt.example.com/ca1.crt"},
@@ -207,9 +205,9 @@ func TestSm2(t *testing.T) {
 		fmt.Printf("failed to read cert file")
 	}
 
-	derBytes, err := CreateCertificate(random, &template, &template, pubKey,sm2Privkey)
+	derBytes, err := CreateCertificate(random, &template, &template, pubKey, sm2Privkey)
 	if err != nil {
-		t.Errorf("%s: failed to create certificate: %s",pubKey, err)
+		t.Errorf("%s: failed to create certificate: %s", pubKey, err)
 	}
 
 	//4.解析成证书格式的二进制文件
@@ -222,9 +220,6 @@ func TestSm2(t *testing.T) {
 		t.Errorf("%v: signature verification failed: %v", pubKey, err)
 	}
 
-
-
-
 	err = cert.CheckSignature(cert.SignatureAlgorithm, cert.RawTBSCertificate, cert.Signature)
 	if err != nil {
 		log.Fatal(err)
@@ -233,7 +228,6 @@ func TestSm2(t *testing.T) {
 		fmt.Printf("CheckSignature ok\n")
 	}
 }
-
 
 func TestSm2Verify(t *testing.T) {
 	cert, err := ReadCertificateFromPem("cert.pem")
@@ -250,8 +244,6 @@ func TestSm2Verify(t *testing.T) {
 		fmt.Printf("CheckSignature ok\n")
 	}
 }
-
-
 
 func BenchmarkSM2(t *testing.B) {
 	t.ReportAllocs()

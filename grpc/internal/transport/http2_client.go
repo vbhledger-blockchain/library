@@ -168,7 +168,6 @@ func newHTTP2Client(connectCtx, ctx context.Context, addr TargetInfo, opts Conne
 	)
 	if creds := opts.TransportCredentials; creds != nil {
 		scheme = "https"
-		//fmt.Printf("\n ------addr.Authority  %+v \n", addr.Authority)
 		conn, authInfo, err = creds.ClientHandshake(connectCtx, addr.Authority, conn)
 		if err != nil {
 			return nil, connectionErrorf(isTemporary(err), err, "transport: authentication handshake failed: %v", err)

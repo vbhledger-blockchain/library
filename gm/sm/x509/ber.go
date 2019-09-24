@@ -17,7 +17,6 @@ type asn1Structured struct {
 }
 
 func (s asn1Structured) EncodeTo(out *bytes.Buffer) error {
-	//fmt.Printf("%s--> tag: % X\n", strings.Repeat("| ", encodeIndent), s.tagBytes)
 	encodeIndent++
 	inner := new(bytes.Buffer)
 	for _, obj := range s.content {
@@ -47,8 +46,6 @@ func (p asn1Primitive) EncodeTo(out *bytes.Buffer) error {
 	if err = encodeLength(out, p.length); err != nil {
 		return err
 	}
-	//fmt.Printf("%s--> tag: % X length: %d\n", strings.Repeat("| ", encodeIndent), p.tagBytes, p.length)
-	//fmt.Printf("%s--> content length: %d\n", strings.Repeat("| ", encodeIndent), len(p.content))
 	out.Write(p.content)
 
 	return nil
@@ -58,7 +55,6 @@ func ber2der(ber []byte) ([]byte, error) {
 	if len(ber) == 0 {
 		return nil, errors.New("ber2der: input ber is empty")
 	}
-	//fmt.Printf("--> ber2der: Transcoding %d bytes\n", len(ber))
 	out := new(bytes.Buffer)
 
 	obj, _, err := readObject(ber, 0)
@@ -133,7 +129,6 @@ func encodeLength(out *bytes.Buffer, length int) (err error) {
 }
 
 func readObject(ber []byte, offset int) (asn1Object, int, error) {
-	//fmt.Printf("\n====> Starting readObject at offset: %d\n\n", offset)
 	tagStart := offset
 	b := ber[offset]
 	offset++
@@ -150,13 +145,6 @@ func readObject(ber []byte, offset int) (asn1Object, int, error) {
 	tagEnd := offset
 
 	kind := b & 0x20
-	/*
-		if kind == 0 {
-			fmt.Print("--> Primitive\n")
-		} else {
-			fmt.Print("--> Constructed\n")
-		}
-	*/
 	// read length
 	var length int
 	l := ber[offset]
@@ -173,8 +161,6 @@ func readObject(ber []byte, offset int) (asn1Object, int, error) {
 		if 0x0 == (int)(ber[offset]) {
 			return nil, 0, errors.New("ber2der: BER tag length has leading zero")
 		}
-		//fmt.Printf("--> (compute length) indicator byte: %x\n", l)
-		//fmt.Printf("--> (compute length) length bytes: % X\n", ber[offset:offset+numberOfBytes])
 		for i := 0; i < numberOfBytes; i++ {
 			length = length*256 + (int)(ber[offset])
 			offset++
@@ -185,14 +171,10 @@ func readObject(ber []byte, offset int) (asn1Object, int, error) {
 		length = (int)(l)
 	}
 
-	//fmt.Printf("--> length        : %d\n", length)
 	contentEnd := offset + length
 	if contentEnd > len(ber) {
 		return nil, 0, errors.New("ber2der: BER tag length is more than available data")
 	}
-	//fmt.Printf("--> content start : %d\n", offset)
-	//fmt.Printf("--> content end   : %d\n", contentEnd)
-	//fmt.Printf("--> content       : % X\n", ber[offset:contentEnd])
 	var obj asn1Object
 	if indefinite && kind == 0 {
 		return nil, 0, errors.New("ber2der: Indefinite form tag must have constructed encoding")

@@ -988,8 +988,6 @@ func checkSignature(algo SignatureAlgorithm, signed, signature []byte, publicKey
 	default:
 		return ErrUnsupportedAlgorithm
 	}
-	fmt.Printf("algo %v   -----------------   \n",algo)
-	fmt.Printf("hashType %v   -----------------   \n",hashType)
 	if !hashType.Available() {
 		return ErrUnsupportedAlgorithm
 	}
@@ -1043,17 +1041,17 @@ func checkSignature(algo SignatureAlgorithm, signed, signature []byte, publicKey
 		if sm2Sig.R.Sign() <= 0 || sm2Sig.S.Sign() <= 0 {
 			return errors.New("x509: SM2 signature contained zero or negative values")
 		}
-			sm2pub := &sm2.PublicKey{
-				Curve: pub.Curve,
-				X:     pub.X,
-				Y:     pub.Y,
-			}
-			//panic("wwwww")
+		sm2pub := &sm2.PublicKey{
+			Curve: pub.Curve,
+			X:     pub.X,
+			Y:     pub.Y,
+		}
+		//panic("wwwww")
 		//fmt.Printf(" sm2Sig.R : %+v \n sm2Sig.S : %+v oooooooooooooooo\n ",sm2Sig.R,sm2Sig.S)
 		//if !sm2.Sm2Verify(sm2pub, signed, nil,  sm2Sig.R, sm2Sig.S) {
-		if !sm2.Sm2Verify(sm2pub, fnHash(), nil,  sm2Sig.R, sm2Sig.S) {
-				return errors.New("x509: SM2 verification failure")
-			}
+		if !sm2.Sm2Verify(sm2pub, fnHash(), nil, sm2Sig.R, sm2Sig.S) {
+			return errors.New("x509: SM2 verification failure")
+		}
 		return
 	}
 	return ErrUnsupportedAlgorithm // 没有这类算法
@@ -1224,7 +1222,6 @@ func parsePublicKey(algo PublicKeyAlgorithm, keyData *publicKeyInfo) (interface{
 		}
 		return pub, nil
 
-		//TODO 国密改造
 	default:
 		return nil, nil
 	}
@@ -2025,7 +2022,7 @@ func CreateCertificate(rand io.Reader, template, parent *Certificate, pub, priv 
 	if err != nil {
 		return
 	}
-	fmt.Printf("\n parent  %+v \n ",parent )
+	fmt.Printf("\n parent  %+v \n ", parent)
 	return asn1.Marshal(certificate{
 		nil,
 		c,
@@ -2396,9 +2393,6 @@ func CreateCertificateRequest(rand io.Reader, template *CertificateRequest, priv
 	}
 	tbsCSR.Raw = tbsCSRContents
 
-
-
-
 	h := hashFunc.New()
 	h.Write(tbsCSRContents)
 	digest := h.Sum(nil)
@@ -2446,7 +2440,7 @@ func ParseCertificateRequest(asn1Data []byte) (*CertificateRequest, error) {
 
 func parseCertificateRequest(in *certificateRequest) (*CertificateRequest, error) {
 	out := &CertificateRequest{
-		Raw: in.Raw,
+		Raw:                      in.Raw,
 		RawTBSCertificateRequest: in.TBSCSR.Raw,
 		RawSubjectPublicKeyInfo:  in.TBSCSR.PublicKey.Raw,
 		RawSubject:               in.TBSCSR.Subject.FullBytes,
@@ -2493,7 +2487,7 @@ func parseCertificateRequest(in *certificateRequest) (*CertificateRequest, error
 
 // CheckSignature reports whether the signature on c is valid.
 func (c *CertificateRequest) CheckSignature() error {
-	fmt.Printf("c.SignatureAlgorithm  %+v c.RawTBSCertificateRequest  %+v c.Signature %+v \n ",c.SignatureAlgorithm,c.RawTBSCertificateRequest, c.Signature )
+	fmt.Printf("c.SignatureAlgorithm  %+v c.RawTBSCertificateRequest  %+v c.Signature %+v \n ", c.SignatureAlgorithm, c.RawTBSCertificateRequest, c.Signature)
 	return checkSignature(c.SignatureAlgorithm, c.RawTBSCertificateRequest, c.Signature, c.PublicKey)
 }
 

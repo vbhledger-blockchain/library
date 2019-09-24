@@ -764,7 +764,7 @@ func (c *Conn) processCertsFromClient(certificate Certificate) error {
 	}
 
 	switch certs[0].PublicKey.(type) {
-	case *ecdsa.PublicKey, *rsa.PublicKey,*sm2.PublicKey:
+	case *ecdsa.PublicKey, *rsa.PublicKey, *sm2.PublicKey:
 	default:
 		c.sendAlert(alertUnsupportedCertificate)
 		return fmt.Errorf("tls: client's certificate contains an unsupported public key of type %T", certs[0].PublicKey)
@@ -787,7 +787,6 @@ func (hs *serverHandshakeState) setCipherSuite(id uint16, supportedCipherSuites 
 			if candidate == nil {
 				continue
 			}
-			//fmt.Println("candidate", candidate, "id", id, "candidate.flags", candidate.flags, "suiteSM2", suiteSM2, "suiteECDHE", suiteECDHE, "suiteECDSA", suiteECDSA)
 			// Don't select a ciphersuite which we can't
 			// support for this client.
 			if candidate.flags&suiteECDHE != 0 {
