@@ -38,6 +38,7 @@ import (
 	"io/ioutil"
 	"math/big"
 	"net"
+	"net/url"
 	"os"
 	"strconv"
 	"time"
@@ -858,6 +859,8 @@ type Certificate struct {
 
 	// CRL Distribution Points
 	CRLDistributionPoints []string
+
+	URIs []*url.URL
 
 	PolicyIdentifiers []asn1.ObjectIdentifier
 }
@@ -2137,6 +2140,8 @@ type CertificateRequest struct {
 	RawTBSCertificateRequest []byte // Certificate request info part of raw ASN.1 DER content.
 	RawSubjectPublicKeyInfo  []byte // DER encoded SubjectPublicKeyInfo.
 	RawSubject               []byte // DER encoded Subject.
+
+	URIs []*url.URL
 
 	Version            int
 	Signature          []byte

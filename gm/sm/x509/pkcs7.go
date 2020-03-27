@@ -34,7 +34,7 @@ type contentInfo struct {
 }
 
 // ErrUnsupportedContentType is returned when a PKCS7 content is not supported.
-// Currently only Data (1.2.156.10197.6.1.4.2.1), Signed Data (1.2.156.10197.6.1.4.2.2),
+// Currently only Data (\1.2.156.10197.6.1.4.2.1), Signed Data (1.2.156.10197.6.1.4.2.2),
 // and Enveloped Data are supported (1.2.156.10197.6.1.4.2.3)
 var ErrUnsupportedContentType = errors.New("pkcs7: cannot parse data: unimplemented content type")
 
